@@ -1,0 +1,37 @@
+<xr-scene>
+  <xr-asset-load type="env-data" asset-id="init" src="/static/env-data/xr-frame-team-workspace-day.bin"/>
+  <xr-asset-material asset-id="skybox" effect="env-data-skybox" />
+  <xr-asset-material asset-id="specular" effect="env-data-specular" />
+  <xr-asset-material asset-id="simple" effect="simple" />
+  <xr-env env-data="init"/>
+
+  <xr-node>
+    <xr-asset-render-texture asset-id="rt-init" width="128" height="128" />
+    <xr-mesh layer="2" geometry="ar-camera-plane" material="skybox" />
+    <xr-camera node-id="camera-sky" render-target="rt-init" cull-mask="0b0101" visible="false" />
+    <xr-mesh layer="3" geometry="ar-camera-plane" material="specular" />
+    <xr-camera node-id="camera-spec" render-target="rt-init" cull-mask="0b01001" visible="false" />
+  </xr-node>
+
+  <xr-node>
+    <xr-node layer="1">
+      <xr-node node-id="center" position="0 0 0"></xr-node>
+      <xr-mesh position="-2 0 -2" geometry="sphere" uniforms="u_metallicRoughnessValues: 0.8 0.3"></xr-mesh>
+      <xr-mesh position="2 0 -2" geometry="sphere" uniforms="u_metallicRoughnessValues: 1 0"></xr-mesh>
+      <xr-mesh position="-2 0 2" geometry="sphere" uniforms="u_metallicRoughnessValues: 0.5 0.5"></xr-mesh>
+      <xr-mesh position="2 0 2" geometry="sphere" uniforms="u_metallicRoughnessValues: 0 1"></xr-mesh>
+      <xr-mesh node-id="spec-view" position="0 2 0" rotation="90 0 0" scale="4 4 4" geometry="plane" material="simple" states="cullOn:false"></xr-mesh>
+    </xr-node>
+
+    <xr-camera
+      id="camera" node-id="camera" position="8 4 8" clear-color="0.1 0.1 0.1 1"
+      target="center" near="0.1" far="100000" background="skybox" cull-mask="0b11"
+      camera-orbit-control=""
+    />
+  </xr-node>
+
+  <xr-node node-id="lights">
+    <xr-light type="ambient" color="1 1 1" intensity="0.3" />
+    <xr-light type="directional" rotation="20 120 0" color="1 1 1" intensity="1" />
+  </xr-node>
+</xr-scene>

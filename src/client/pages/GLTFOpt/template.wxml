@@ -1,0 +1,22 @@
+<xr-scene>
+  <xr-asset-load type="env-data" asset-id="init" src="/static/env-data/xr-frame-team-workspace-day.bin"/>
+  <xr-asset-load type="gltf" asset-id="box" src="/static/gltf/box.gltf"/>
+  <xr-asset-material asset-id="skybox" effect="env-data-skybox" />
+  <xr-asset-material asset-id="specular" effect="env-data-specular" />
+  <xr-asset-material asset-id="simple" effect="simple" />
+  <xr-env env-data="init"/>
+
+  <xr-node>
+    <xr-gltf node-id="center" model="box"></xr-gltf>
+    <xr-camera
+      id="camera" node-id="camera" position="8 4 8" clear-color="0.1 0.1 0.1 1"
+      target="center" near="0.1" far="2000" background="skybox"
+      camera-orbit-control=""
+    />
+  </xr-node>
+
+  <xr-node node-id="lights">
+    <xr-light type="ambient" color="1 1 1" intensity="0.3" />
+    <xr-light type="directional" rotation="20 120 0" color="1 1 1" intensity="1" />
+  </xr-node>
+</xr-scene>

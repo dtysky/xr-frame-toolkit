@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "outDir": "dist",
+    "baseUrl": "."
+  },
+  "include": [
+    "src/service/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
