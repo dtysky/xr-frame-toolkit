@@ -71,7 +71,7 @@ export async function decodeImage(src: string): Promise<IImage> {
   if (ext === '.hdr') {
     return new Promise((resolve, reject) => {
       const file = fs.createReadStream(src);
-      const hdrloader = new hdr.loader();
+      const hdrloader = new hdr.loader() as any;
 
       hdrloader.on('load', function() {
         // console.log(this.headers);

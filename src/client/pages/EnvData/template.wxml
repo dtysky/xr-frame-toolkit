@@ -1,5 +1,5 @@
 <xr-scene>
-  <xr-asset-load type="env-data" asset-id="init" src="/static/env-data/xr-frame-team-workspace-day.bin"/>
+  <xr-asset-load type="env-data" asset-id="init" src="./static/env-data/xr-frame-team-workspace-day.bin"/>
   <xr-asset-material asset-id="skybox" effect="env-data-skybox" />
   <xr-asset-material asset-id="specular" effect="env-data-specular" />
   <xr-asset-material asset-id="simple" effect="simple" />

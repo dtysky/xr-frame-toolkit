@@ -1,15 +1,7 @@
 const path = require('path');
-const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-function syncVersions() {
-  const version = JSON.parse(fs.readFileSync('./package.json', 'utf-8')).version;
-  let tmp = JSON.parse(fs.readFileSync('./platforms/desktop/tauri.conf.json', 'utf-8'));
-  tmp.package.version = version;
-  fs.writeFileSync('./platforms/desktop/tauri.conf.json', JSON.stringify(tmp, undefined, 2), 'utf-8');
-}
 
 function convert(code) {
   return `window['wasmLoadPromise'].then(wm => {
@@ -44,18 +36,11 @@ class Replace {
 }
 
 module.exports = (env) => {
-  const isProd = !!env.production;
-
-  if (isProd) {
-    syncVersions();
-  }
+  const isProd = !!env.isProd;
 
   return {
     devtool: !isProd ? 'source-map' : false,
     mode: isProd ? 'production' : 'development',
-    stats: {
-      warnings:false
-    },
 
     entry: {
       main: [
@@ -66,7 +51,8 @@ module.exports = (env) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'assets/main-[hash].js',
-      publicPath: '/'
+      publicPath: isProd ? './' : '/',
+      assetModuleFilename: 'assets/[hash][ext][query]'
     },
   
     resolve: {

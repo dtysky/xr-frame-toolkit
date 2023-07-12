@@ -179,7 +179,7 @@ export default function GLTFOpt(props: IGLTFOptProps) {
                       props.setLoading('');
                     }}
                   >
-                    预览源
+                    查看源模
                   </Button>
                   <Button
                     onClick={async () => {

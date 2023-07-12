@@ -1,11 +1,19 @@
 {
   "name": "xr-frame-toolkit",
-  "version": "0.0.0",
+  "version": "0.8.0",
+  "main": "dist/index.js",
   "scripts": {
-    "dev-client": "webpack serve --config webpack.config.js",
-    "dev-service": "rm -rf dist && mkdir -p dist/common && cp src/service/common/tinyexr.wasm dist/common && tsc -w -p ./tsconfig.service.json",
+    "prepare": "rm -rf dist && mkdir -p dist/common && cp src/service/common/tinyexr.wasm dist/common",
+    "dev-client": "webpack serve",
+    "dev-service": "npm run prepare && tsc -w -p ./tsconfig.service.json",
     "dev": "concurrently --kill-others \"npm run dev-client\" \"npm run dev-service\"",
-    "start": "electron ./dist"
+    "build-client": "webpack --env isProd=true && cp -rf src/static dist",
+    "build-service": "npm run prepare && tsc -p ./tsconfig.service.json",
+    "build": "npm run build-service && npm run build-client",
+    "start": "export NODE_ENV=development && electron ./dist",
+    "package": "npm run build && rm -rf out && electron-forge package",
+    "make": "npm run build && rm -rf out && electron-forge make",
+    "test": "rm -rf out && electron-forge make"
   },
   "dependencies": {
     "gl-matrix": "^3.4.3",
@@ -23,11 +31,17 @@
     "xyz-utils": "^0.5.2"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.2.1",
+    "@electron-forge/maker-deb": "^6.2.1",
+    "@electron-forge/maker-dmg": "^6.2.1",
+    "@electron-forge/maker-squirrel": "^6.2.1",
+    "@electron-forge/maker-wix": "^6.1.1",
     "@types/node": "^20.2.3",
     "@types/react": "^18.2.7",
     "concurrently": "^8.0.1",
     "css-loader": "^6.7.3",
     "electron": "^24.3.1",
+    "electron-squirrel-startup": "^1.0.0",
     "html-webpack-plugin": "^4.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.23",

@@ -18,6 +18,12 @@
 
 .sidebar {
   position: absolute;
-  width: 220px;
+  width: 260px;
   padding: 1rem;
+}
+
+.itemButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }

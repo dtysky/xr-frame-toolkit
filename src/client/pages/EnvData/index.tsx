@@ -34,7 +34,6 @@ export default function EnvData(props: IEnvDataProps) {
   const [specSize, setSpecSize] = React.useState<number>(1024);
   const [previewExp, setPreviewExp] = React.useState<number>(1);
   const [previewRtt, setPreviewRtt] = React.useState<number>(0);
-  const [exportBin, setExportBin] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     if (state === 'Init') {
@@ -76,28 +75,34 @@ export default function EnvData(props: IEnvDataProps) {
                 选择图像
               </Button>
             </FormItem>
-            <FormItem>
-              <Checkbox
-                label={<p style={{color: '#6cd4a4', display: 'inline-block'}}>导出为{exportBin ? 'BIN文件' : '文件夹'}</p>}
-                checked={exportBin}
-                onChange={(_, isChecked) => setExportBin(isChecked)}
-              />
-            </FormItem>
-            <FormItem>
+            <div className={css.itemButtons}>
               <Button
                 onClick={async () => {
                   props.setLoading('导出中...');
                   try {
-                    await generator.current.export(exportBin);
+                    await generator.current.export(false);
                   } catch (err) {
                     props.setNotify('error', `导出失败：${err}`);
                   }
                   props.setLoading('');
                 }}
               >
-                确定导出
+                导出为文件夹
               </Button>
-            </FormItem>
+              <Button
+                onClick={async () => {
+                  props.setLoading('导出中...');
+                  try {
+                    await generator.current.export(true);
+                  } catch (err) {
+                    props.setNotify('error', `导出失败：${err}`);
+                  }
+                  props.setLoading('');
+                }}
+              >
+                导出单二进制
+              </Button>
+            </div>
           </FormGroup>
 
           {

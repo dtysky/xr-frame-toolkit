@@ -18,8 +18,9 @@ function createWindow() {
     }
   });
 
-  // win.loadFile('index.html')
-  win.loadURL('http:127.0.0.1:8888');
+  process.env.NODE_ENV === 'development' ?
+    win.loadURL('http:127.0.0.1:8888') :
+    win.loadFile('./dist/index.html');
 }
 
 app.whenReady().then(() => {

@@ -18,7 +18,7 @@ import css from './app.module.scss';
 type TPage = 'wxml' | 'gltf' | 'env-data';
 
 export default function App() {
-  const [page, setPage] = React.useState<TPage>('gltf');
+  const [page, setPage] = React.useState<TPage>('env-data');
   const [notify, setNotify] = React.useState<any>();
   const [loading, setLoading] = React.useState<string>();
 

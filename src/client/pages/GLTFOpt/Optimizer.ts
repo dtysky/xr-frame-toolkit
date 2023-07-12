@@ -38,6 +38,11 @@ export default class Optimizer {
   }
 
   public async showModal(src: string) {
+    if (this._preSrc) {
+      this._scene.assets.releaseAsset('gltf', this._preSrc);
+      this._preSrc = '';
+    }
+
     const model = await this._scene.assets.loadAsset({
       type: 'gltf', assetId: src,
       src: `${apis.LOCAL_FILE_PREFIX}${src}`, options: {}
@@ -45,11 +50,6 @@ export default class Optimizer {
 
     if (!this._gltf) {
       this._gltf = this._scene.getNodeById('center').el.getComponent(xrSystem.GLTF);
-    }
-
-    if (this._preSrc) {
-      this._scene.assets.releaseAsset('gltf', this._preSrc);
-      this._preSrc = '';
     }
 
     return new Promise<void>((resolve, reject) => {

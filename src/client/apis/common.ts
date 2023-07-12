@@ -14,7 +14,6 @@ export async function callAPI<T>(
 ): Promise<T> {
   const res: IApiResult<T> = await window['electronAPI'].services(name, ...args);
 
-  console.log(name, ...args, res)
   if (res.error) {
     throw new Error(res.error);
   }
