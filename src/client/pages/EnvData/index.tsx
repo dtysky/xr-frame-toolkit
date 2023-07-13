@@ -182,7 +182,7 @@ export default function EnvData(props: IEnvDataProps) {
                     showValue={false}
                     value={previewExp * 10}
                     min={0}
-                    max={40}
+                    max={20}
                     onChange={val => {
                       generator.current.changePreviewExp(val / 10);
                       setPreviewExp(val / 10);
