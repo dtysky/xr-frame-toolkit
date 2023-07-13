@@ -112,7 +112,7 @@ uniform sampler2D u_source;
 
 float texelSize = 1.0 / 1024.0;
 
-const int kernelSize = 9; // 高斯模糊的核大小，必须为奇数
+const int kernelSize = 13; // 高斯模糊的核大小，必须为奇数
 const int numSamples = 16; // 采样点数量
 
 vec4 gaussianBlur(vec2 uv, float blurSize) {
@@ -159,7 +159,7 @@ void main()
   vec2 uv = v_texCoord.xy;
   uv.y = uv.y * 2.0;
 
-  vec4 srcColor = vec4(0.0);
+  vec4 srcColor = vec4(1.0);
 
   if (v_texCoord.y <= 0.5) {
     // mipmap 1

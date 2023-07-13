@@ -16,11 +16,11 @@
   <xr-node>
     <xr-node layer="1">
       <xr-node node-id="center" position="0 0 0"></xr-node>
-      <xr-mesh position="-2 0 -2" geometry="sphere" uniforms="u_metallicRoughnessValues: 1 0.5"></xr-mesh>
+      <!-- <xr-mesh position="-2 0 -2" geometry="sphere" uniforms="u_metallicRoughnessValues: 1 0.2"></xr-mesh>
       <xr-mesh position="2 0 -2" geometry="sphere" uniforms="u_metallicRoughnessValues: 1 0"></xr-mesh>
       <xr-mesh position="-2 0 2" geometry="sphere" uniforms="u_metallicRoughnessValues: 0 0.5"></xr-mesh>
-      <xr-mesh position="2 0 2" geometry="sphere" uniforms="u_metallicRoughnessValues: 0 1"></xr-mesh>
-      <xr-mesh node-id="spec-view" position="0 2 0" rotation="90 0 0" scale="4 4 4" geometry="plane" material="simple" states="cullOn:false"></xr-mesh>
+      <xr-mesh position="2 0 2" geometry="sphere" uniforms="u_metallicRoughnessValues: 0 1"></xr-mesh> -->
+      <xr-mesh node-id="spec-view" position="0 2 0" rotation="90 0 0" scale="14 14 14" geometry="plane" material="simple" states="cullOn:false"></xr-mesh>
     </xr-node>
 
     <xr-camera
