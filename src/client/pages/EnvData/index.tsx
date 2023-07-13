@@ -75,34 +75,38 @@ export default function EnvData(props: IEnvDataProps) {
                 选择图像
               </Button>
             </FormItem>
-            <div className={css.itemButtons}>
-              <Button
-                onClick={async () => {
-                  props.setLoading('导出中...');
-                  try {
-                    await generator.current.export(false);
-                  } catch (err) {
-                    props.setNotify('error', `导出失败：${err}`);
-                  }
-                  props.setLoading('');
-                }}
-              >
-                导出为文件夹
-              </Button>
-              <Button
-                onClick={async () => {
-                  props.setLoading('导出中...');
-                  try {
-                    await generator.current.export(true);
-                  } catch (err) {
-                    props.setNotify('error', `导出失败：${err}`);
-                  }
-                  props.setLoading('');
-                }}
-              >
-                导出单二进制
-              </Button>
-            </div>
+            {
+             state === 'Control' && (
+              <div className={css.itemButtons}>
+                <Button
+                  onClick={async () => {
+                    props.setLoading('导出中...');
+                    try {
+                      await generator.current.export(false);
+                    } catch (err) {
+                      props.setNotify('error', `导出失败：${err}`);
+                    }
+                    props.setLoading('');
+                  }}
+                >
+                  导出为文件夹
+                </Button>
+                <Button
+                  onClick={async () => {
+                    props.setLoading('导出中...');
+                    try {
+                      await generator.current.export(true);
+                    } catch (err) {
+                      props.setNotify('error', `导出失败：${err}`);
+                    }
+                    props.setLoading('');
+                  }}
+                >
+                  导出单二进制
+                </Button>
+              </div>
+             ) 
+            }
           </FormGroup>
 
           {
@@ -168,7 +172,7 @@ export default function EnvData(props: IEnvDataProps) {
             )
           } */}
 
-          {/* {
+          {
             state === 'Control' && (
               <FormGroup label="预览参数" elementStyle={{flexFlow: 'column'}}>
                 <FormItem label="曝光" status='normal'>
@@ -179,7 +183,10 @@ export default function EnvData(props: IEnvDataProps) {
                     value={previewExp * 10}
                     min={5}
                     max={40}
-                    onChange={val => setPreviewExp(val / 10)}
+                    onChange={val => {
+                      generator.current.changePreviewExp(val);
+                      setPreviewExp(val / 10);
+                    }}
                   />
                 </FormItem>
                 <FormItem label="旋转" status='normal'>
@@ -190,12 +197,15 @@ export default function EnvData(props: IEnvDataProps) {
                     value={previewRtt}
                     min={0}
                     max={360}
-                    onChange={val => setPreviewRtt(val)}
+                    onChange={val => {
+                      generator.current.changePreviewRtt(val);
+                      setPreviewRtt(val);
+                    }}
                   />
                 </FormItem>
               </FormGroup>
             )
-          } */}
+          }
         </Form>
       </Sidebar>
     </div>

@@ -12,3 +12,5 @@ export {default as loadModal} from './loadModal';
 export {default as selectFolder} from './selectFolder';
 export {default as optimizeGlTF, TCompressTextureQuality} from './optimizeGlTF';
 export {default as readLocalFile, LOCAL_FILE_PREFIX} from './readLocalFile';
+export {default as checkUpdate} from './checkUpdate';
+export {default as openInBrowser} from './openInBrowser';

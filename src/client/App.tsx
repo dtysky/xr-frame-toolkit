@@ -5,8 +5,9 @@
  * @Date    : 2023/5/17 17:20:26
  */
 import * as React from 'react';
-import {Menu, MenuItem, Loading, Notifications} from 'hana-ui';
+import {Menu, MenuItem, Loading, Notifications, Modal, Link} from 'hana-ui';
 
+import * as apis from './apis';
 import WXMLViewer from './pages/WXMLViewer';
 import EnvData from './pages/EnvData';
 import GLTFOpt from './pages/GLTFOpt';
@@ -21,6 +22,7 @@ export default function App() {
   const [page, setPage] = React.useState<TPage>('env-data');
   const [notify, setNotify] = React.useState<any>();
   const [loading, setLoading] = React.useState<string>();
+  const [newVersion, setNewVersion] = React.useState<string>('');
 
   const handleSetNotify = React.useCallback(
     (type: string, content: string, duration?: number) => {
@@ -34,6 +36,12 @@ export default function App() {
     },
     []
   );
+
+  React.useEffect(() => {
+    apis.checkUpdate().then(version => {
+      setNewVersion(version);
+    })
+  }, []);
 
   return (
     <div className={css.container}>
@@ -68,6 +76,29 @@ export default function App() {
       </div>
       <Notifications notification={notify} />
       {loading && <Loading content={loading} />}
+      <Modal
+        contentStyle={{height: 200}}
+        title={'发现新的版本'}
+        show={!!newVersion}
+        cancel={() => setNewVersion('')}
+      >
+        <div className={css.updateVersion}>
+          <p>检测到新版本{newVersion}，可以下载更新：</p>
+          <div>
+            <div
+              className={css.link}
+              onClick={() => apis.openInBrowser('https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit.dmg')}
+            >
+              MacOS版本</div>
+            <div
+              className={css.link}
+              onClick={() => apis.openInBrowser('https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit.zip')}
+            >
+              Windows版本
+            </div>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

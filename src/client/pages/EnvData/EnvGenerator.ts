@@ -75,6 +75,10 @@ export class EnvGenerator {
       throw new Error(`高光贴图尺寸必须为2的幂！`);
     }
 
+    if (skySize > 4096 || specSize > 4096) {
+      throw new Error(`输出尺寸不得大于4096！`);
+    }
+
     let rebuildEnv = !this._envData;
     if (this._skyRT?.width !== skySize) {
       this._skyRT = this._scene.createRenderTexture({
@@ -132,11 +136,14 @@ export class EnvGenerator {
   }
 
   public changePreviewExp(value: number) {
-
+    this._env.setData({
+      diffuseExp: value,
+      specularExp: value
+    });
   }
 
   public changePreviewRtt(value: number) {
-    
+    this._env.setData({rotation: value});
   }
 
   public async export(bin: boolean) {

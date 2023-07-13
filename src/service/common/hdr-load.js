@@ -121,7 +121,6 @@ HDRLoader.prototype._readScanline = function (chunk) {
 		if ((firstPixel[Z] << 8 | firstPixel[E]) !== this._getScanlinePixels()) {
 			this._lastChunk = null;
 			this.data = null;
-			console.log(this, chunk)
 			this._error = true;
 			this.emit('error');
 			return;
@@ -300,7 +299,6 @@ HDRLoader.prototype._readHeader = function (chunk) {
 
 			break;
 		} else {
-			console.log('hdr readheader', HEADER_PREFIXES, headerData[1], headerData[2], headerData[3])
 			switch (HEADER_PREFIXES[String(headerData[1])]) {
 				case 'FILETYPE':
 					if (headerData[2] === 'RADIANCE' || headerData[2] === 'RGBE') {

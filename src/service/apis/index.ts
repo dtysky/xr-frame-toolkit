@@ -12,6 +12,7 @@ import loadModal from './loadModal';
 import selectFolder from './selectFolder';
 import optimizeGlTF from './optimizeGlTF';
 import readLocalFile from './readLocalFile';
+import openInBrowser from './openInBrowser';
 
 interface IApiResult {
   res?: any;
@@ -29,7 +30,8 @@ const apis: {
   loadModal,
   selectFolder,
   optimizeGlTF,
-  readLocalFile
+  readLocalFile,
+  openInBrowser
 };
 
 export default apis;

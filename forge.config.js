@@ -6,7 +6,9 @@ module.exports = {
     name: 'XR-FRAME-TOOLKIT',
     icon: ICON_PREFIX,
     ignore: [
-      /^\/(src|\.|forge|tsconfig|webpack|package-lock)/
+      /^\/(src|\.|forge|tsconfig|webpack|package-lock)/,
+      /^\/node_modules\/(webpack|hana|react|@types|sass|typescript|postcss|@babel)/,
+      /(loader|plugin)$/
     ]
   },
   makers: [

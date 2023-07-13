@@ -35,6 +35,7 @@ class Replace {
   }
 }
 
+const package = require('./package.json');
 module.exports = (env) => {
   const isProd = !!env.isProd;
 
@@ -117,7 +118,8 @@ module.exports = (env) => {
       }),
       new webpack.DefinePlugin({
         'process.env': {
-          isProd
+          isProd,
+          version: JSON.stringify(package.version)
         }
       }),
       new Replace(),

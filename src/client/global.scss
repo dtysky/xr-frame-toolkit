@@ -26,6 +26,10 @@ html, body, #container {
   .hana-slider {
     background: rgba(200, 200, 200, 0.5);
   }
+
+  .hana-sidebar.hana-sidebar-right {
+    transition: none;
+  }
 }
 
 body {
