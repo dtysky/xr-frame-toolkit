@@ -11,9 +11,9 @@
 
 [Windows版本](https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit.zip)  
 [MacOS X64版本](https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit.dmg)  
-[MacOS ARM64版本](https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit-arm64.dmg)  
+[MacOS ARM64(M1)版本](https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit-arm64.dmg)  
 
->特别注意，如果ARM64版本报错，需要先执行`xattr -r -d com.apple.quarantine ${你的app所在路径，比如 /Applications/XR-FRAME-TOOLKIT.app }`，然后正常打开即可。
+>特别注意，如果ARM64(M1)版本报错，需要先执行`xattr -r -d com.apple.quarantine ${你的app所在路径，比如 /Applications/XR-FRAME-TOOLKIT.app }`，然后正常打开即可。
 
 打开后，参考下面的视频即可：
 
