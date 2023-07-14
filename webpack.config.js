@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 
 function convert(code) {
   return `window['wasmLoadPromise'].then(wm => {
@@ -124,10 +123,7 @@ module.exports = (env) => {
         }
       }),
       new Replace(),
-      !isProd && new webpack.HotModuleReplacementPlugin(),
-      isProd && new CopyPlugin({
-        patterns: [{from: 'src/static', to: 'static' }],
-      }),
+      !isProd && new webpack.HotModuleReplacementPlugin()
     ].filter(item => !!item),
 
     devServer: {

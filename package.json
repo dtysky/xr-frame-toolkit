@@ -46,7 +46,6 @@
     "@types/node": "^20.2.3",
     "@types/react": "^18.2.7",
     "concurrently": "^8.0.1",
-    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "electron": "^24.3.1",
     "electron-squirrel-startup": "^1.0.0",

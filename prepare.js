@@ -13,3 +13,9 @@ fs.copyFileSync(
   path.resolve(__dirname, 'src/service/common/tinyexr.wasm'),
   path.resolve(__dirname, 'dist/common/tinyexr.wasm')
 );
+
+fs.cpSync(
+  path.resolve(__dirname, 'src/static'),
+  path.resolve(__dirname, 'dist/static'),
+  {recursive: true}
+);
