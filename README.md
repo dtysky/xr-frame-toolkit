@@ -9,10 +9,19 @@
 
 首先下载：
 
-然后参考下面的视频即可：
+[MacOS版本](https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit.dmg)  
+[Windows版本](https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit.zip)  
 
-### env-data
+安装/解压打开后，参考下面的视频即可：
 
+>环境数据生成从`00:00`到`00:32`，GlTF优化从`00:32`到`02:25`。
 
-### gltf
+[![](./cover.jpg)](https://developers.weixin.qq.com/miniprogram/dev/component/xr-frame/tools/toolkit.html#使用)
 
+## 开发
+
+**必须先执行**`npm run init`，不能使用`yarn`、`pnpm`等工具。  
+
+开发先执行`npm run dev`，然后再新开一个终端执行`npm run start`。
+
+构建执行`npm run make`。

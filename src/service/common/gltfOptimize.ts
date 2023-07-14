@@ -725,7 +725,7 @@ function combineImages(
       const sIdx = sources[t];
       buffers[sIdx] = Buffer.concat([buffers[sIdx], b]);
       bvs.push({buffer: sIdx, byteOffset: offsets[t], byteLength: b.byteLength});
-      ext.mimeType = mime.lookup(getImageExtension(b));
+      ext.mimeType = (mime as any).getType(getImageExtension(b));
       ext.bufferView = bvs.length - 1;
       offsets[t] += b.byteLength;
       delete assets[ext.uri];
