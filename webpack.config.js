@@ -52,8 +52,7 @@ module.exports = (env) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'assets/main-[hash].js',
-      publicPath: isProd ? './' : '/',
-      assetModuleFilename: 'assets/[hash][ext][query]'
+      publicPath: isProd ? './' : '/'
     },
   
     resolve: {
@@ -71,8 +70,8 @@ module.exports = (env) => {
           exclude: /node_modules/
         },
         {
-          test: /\.(png|jpg|webp|mp4)$/,
-          type: 'asset/resource'
+          test: /\.(png|jpg|webp|mp4|ttf|eot|svg|woff)$/,
+          type: 'asset/inline'
         },
         {
           test: /\.(wxml)$/,
