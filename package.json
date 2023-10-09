@@ -1,6 +1,6 @@
 {
   "name": "xr-frame-toolkit",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Toolkit for wx-miniprogram xr-frame framework",
   "main": "dist/index.js",
   "authors": [
