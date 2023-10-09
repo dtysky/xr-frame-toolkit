@@ -87,9 +87,16 @@ export default function App() {
           <div>
             <div
               className={css.link}
+              onClick={() => apis.openInBrowser('https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit-arm64.dmg')}
+            >
+              MacM1版本
+            </div>
+            <div
+              className={css.link}
               onClick={() => apis.openInBrowser('https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit.dmg')}
             >
-              MacOS版本</div>
+              MacX64版本
+            </div>
             <div
               className={css.link}
               onClick={() => apis.openInBrowser('https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/toolkit/xr-frame-toolkit.zip')}
