@@ -161,55 +161,56 @@ void main()
 
   vec4 srcColor = vec4(1.0);
 
+
   if (v_texCoord.y <= 0.5) {
     // mipmap 1
     vec2 uv1 = vec2(v_texCoord.x, v_texCoord.y * 2.0);
     srcColor = texture2D(u_source, uv1);
   } else if (v_texCoord.y <= 0.75){
     // mipmap 2
-    if (v_texCoord.x <= 0.5) {
+    if (v_texCoord.x <= 0.001 + 0.5) {
       vec2 uv2 = vec2(v_texCoord.x * 2.0, (v_texCoord.y - 0.5) * 4.0);
       // srcColor = texture2D(u_source, uv2);
       srcColor = gaussianBlur(uv2, 1.0);
     }
   } else if (v_texCoord.y <= 0.875){
     // mipmap 3
-    if (v_texCoord.x <= 0.25) {
+    if (v_texCoord.x <= 0.001 + 0.25) {
       vec2 uv3 = vec2(v_texCoord.x * 4.0, (v_texCoord.y - 0.75) * 8.0);
       // srcColor = texture2D(u_source, uv3);
       srcColor = gaussianBlur(uv3, 2.0);
     }
   } else if (v_texCoord.y <= 0.9375){
     // mipmap 4
-    if (v_texCoord.x <= 0.125) {
+    if (v_texCoord.x <= 0.001 + 0.125) {
       vec2 uv4 = vec2(v_texCoord.x * 8.0, (v_texCoord.y - 0.875) * 16.0);
       // srcColor = texture2D(u_source, uv4);
       srcColor = gaussianBlur(uv4, 3.0);
     }
   } else if (v_texCoord.y <= 0.96875){
     // mipmap 5
-    if (v_texCoord.x <= 0.0625) {
+    if (v_texCoord.x <= 0.001 + 0.0625) {
       vec2 uv5 = vec2(v_texCoord.x * 16.0, (v_texCoord.y - 0.9375) * 32.0);
       srcColor = texture2D(u_source, uv5);
       srcColor = gaussianBlur(uv5, 4.0);
     }
   } else if (v_texCoord.y <= 0.984375){
     // mipmap 6
-    if (v_texCoord.x <= 0.03125) {
+    if (v_texCoord.x <= 0.001 + 0.03125) {
       vec2 uv6 = vec2(v_texCoord.x * 32.0, (v_texCoord.y - 0.96875) * 64.0);
       // srcColor = texture2D(u_source, uv6);
       srcColor = gaussianBlur(uv6, 5.0);
     }
   } else if (v_texCoord.y <= 0.9921875){
     // mipmap 7
-    if (v_texCoord.x <= 0.015625) {
+    if (v_texCoord.x <= 0.001 + 0.015625) {
       vec2 uv7 = vec2(v_texCoord.x * 64.0, (v_texCoord.y - 0.984375) * 128.0);
       // srcColor = texture2D(u_source, uv7);
       srcColor = gaussianBlur(uv7, 6.0);
     }
   } else if (v_texCoord.y <= 0.99609375){
     // mipmap 8
-    if (v_texCoord.x <= 0.0078125) {
+    if (v_texCoord.x <= 0.001 + 0.0078125) {
       vec2 uv8 = vec2(v_texCoord.x * 128.0, (v_texCoord.y - 0.9921875) * 256.0);
       // srcColor = texture2D(u_source, uv8);
       srcColor = gaussianBlur(uv8, 7.0);
